@@ -22,17 +22,6 @@
       <md-card-content>
         <div class="md-layout">
 
-          <div class="md-layout-item md-small-size-100 md-size-25">
-            <md-field>
-              <label>Phone No.</label>
-              <md-input v-model="phoneNumber"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-25">
-            <md-field>
-              <label>Name</label>
-              <md-input v-model="name" type="text"></md-input>
-
           
           <div class="md-layout-item md-small-size-100 md-size-25" style="text-align:center">
             <md-field style="margin-left:50vh;">

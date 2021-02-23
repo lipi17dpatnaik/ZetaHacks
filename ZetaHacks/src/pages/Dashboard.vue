@@ -84,8 +84,8 @@
 
           <template slot="footer">
             <div class="stats">
-              <md-icon>date_range</md-icon>
-              Last 24 Hours
+            <button type="button" class="btn btn-primary" style="background-color:purple">Withdraw Investments</button>
+              
             </div>
           </template>
         </stats-card>
