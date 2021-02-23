@@ -3,29 +3,37 @@
     <div class="md-layout">
       <div class="md-layout-item">
         <md-card>
-          <md-card-header data-background-color="green">
-            <h4 class="title">Material Dashboard Heading</h4>
-            <p class="category">Created using Roboto Font Family</p>
+          <md-card-header data-background-color="purple">
+            <h4 class="title">PAY TO:</h4>
+
+            <div class="active-pink-3 active-pink-4 mb-3">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="ENTER PHONE NO."
+                aria-label="Search"
+              />
+            </div>
+            <!-- <p class="category">Created using Roboto Font Family</p> -->
           </md-card-header>
           <md-card-content>
             <div id="typography">
-              <div class="title">
-                <h2>Typography</h2>
+              <div class="tim-typo">
+                <h3>Previous Payees</h3>
               </div>
               <div class="row">
                 <div class="tim-typo">
-                  <h1>
-                    <span class="tim-note">Header 1</span>The Life of Material
-                    Dashboard
-                  </h1>
+                  <h3>
+                    <span class="tim-note"> <h4>MARK:</h4></span>Rs. 257
+                  </h3>
+                 <button type="button" onclick="">Pay Again</button>
                 </div>
                 <div class="tim-typo">
-                  <h2>
-                    <span class="tim-note">Header 2</span>The life of Material
-                    Dashboard
-                  </h2>
+                  <h3>
+                    <span class="tim-note"><h4>JACK:</h4></span>Rs. 198
+                  </h3><button type="button" onclick="">Pay Again</button>
                 </div>
-                <div class="tim-typo">
+                <!-- <div class="tim-typo">
                   <h3>
                     <span class="tim-note">Header 3</span>The life of Material
                     Dashboard
@@ -69,9 +77,7 @@
                       responsibility that I have, to push possibilities, to show
                       people, this is the level that things could be at.
                     </p>
-                    <small>
-                      Kanye West, Musician
-                    </small>
+                    <small> Kanye West, Musician </small>
                   </blockquote>
                 </div>
                 <div class="tim-typo">
@@ -115,15 +121,15 @@
                     I will be the leader of a company that ends up being worth
                     billions of dollars, because I got the answers...
                   </p>
-                </div>
-                <div class="tim-typo">
+                </div> -->
+                <!-- <div class="tim-typo">
                   <h2>
                     <span class="tim-note">Small Tag</span>
                     Header with small subtitle
                     <br />
                     <small>Use "small" tag for the headers</small>
                   </h2>
-                </div>
+                </div> -->
               </div>
             </div>
           </md-card-content>
@@ -134,12 +140,40 @@
 </template>
 
 <script>
+import { mdbContainer } from "mdbvue";
+
 export default {
+  // components: {
+  //   mdbContainer,
+  // },
   props: {
     dataBackgroundColor: {
       type: String,
-      default: ""
-    }
-  }
+      default: "",
+    },
+  },
 };
 </script>
+
+<style>
+.active-pink-4 input[type="text"]:focus:not([readonly]) {
+  border: 1px solid white;
+  box-shadow: 0 0 0 1px white;
+}
+.active-pink-3 input[type="text"] {
+  border: 1px solid white;
+  box-shadow: 0 0 0 1px white;
+}
+.active-purple-4 input[type="text"]:focus:not([readonly]) {
+  border: 1px solid #ce93d8;
+  box-shadow: 0 0 0 1px #ce93d8;
+}
+.active-purple-3 input[type="text"] {
+  border: 1px solid #ce93d8;
+  box-shadow: 0 0 0 1px #ce93d8;
+}
+.active-cyan-4 input[type="text"]:focus:not([readonly]) {
+  border: 1px solid #4dd0e1;
+  box-shadow: 0 0 0 1px #4dd0e1;
+}
+</style>
