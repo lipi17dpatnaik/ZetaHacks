@@ -6,8 +6,16 @@ import TableList from "@/pages/TableList.vue";
 import Typography from "@/pages/Typography.vue";
 import Icons from "@/pages/Icons.vue";
 import Notifications from "@/pages/Notifications.vue";
+import Login from "../views/Login.vue"
+// import Register from "../views/Register.vue"
+
 
 const routes = [
+  {
+    path: "/login",
+    name: "login",
+    component: Login
+  },
   {
     path: "/",
     component: DashboardLayout,
