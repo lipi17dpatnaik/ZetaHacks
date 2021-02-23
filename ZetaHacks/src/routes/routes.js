@@ -8,6 +8,7 @@ import Payments from "@/pages/Payments.vue";
 import Icons from "@/pages/Icons.vue";
 import Notifications from "@/pages/Notifications.vue";
 import Login from "@/pages/Login.vue"
+import Register from "@/pages/Register.vue"
 // import Register from "../views/Register.vue"
 
 
@@ -20,12 +21,17 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/login",
+    redirect: "/register",
     children: [
       {
 	path: "login",
         name: "Login",
 	component: Login
+      },
+      {
+	path: "register",
+	name: "Register",
+	component: Register
       },
       {
 	path: "admin",

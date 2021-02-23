@@ -57,14 +57,14 @@
           </template>
 
           <template slot="content">
-            <p class="category">Current Value</p>
-            <h3 class="title">$34,245</h3>
+            <p class="category">Wallet</p>
+            <h3 class="title" style="font-weight:bold">{{walletMoney}}</h3>
           </template>
 
           <template slot="footer">
             <div class="stats">
               <md-icon>date_range</md-icon>
-              Last 24 Hours
+              This money needs to be Invested
             </div>
           </template>
         </stats-card>
@@ -79,7 +79,7 @@
 
           <template slot="content">
             <p class="category">Invested Value</p>
-            <h3 class="title">$34,245</h3>
+            <h3 class="title">{{investedValue}}</h3>
           </template>
 
           <template slot="footer">
@@ -99,8 +99,8 @@
           </template>
 
           <template slot="content">
-            <p class="category">Profit Earned</p>
-            <h3 class="title">$0</h3>
+            <p class="category">Account Balance</p>
+            <h3 class="title">{{accountBalance}}</h3>
           </template>
 
           <template slot="footer">
@@ -121,7 +121,7 @@
 
           <template slot="content">
             <p class="category">Investments</p>
-            <h3 class="title">75</h3>
+            <h3 class="title">{{totalInvestement}}</h3>
           </template>
 
           <template slot="footer">
@@ -132,13 +132,38 @@
           </template>
         </stats-card>
       </div>
+
+      <div
+        class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
+      >
+        <stats-card data-background-color="purple">
+          <template slot="header">
+            <md-icon>info_outline</md-icon>
+          </template>
+
+          <template slot="content">
+            <p class="category">Multiplier</p>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Multiplier" v-model="multiplier">
+            <button type="button" class="btn btn-primary" style="background-color:purple" v-on:click="updateMultiplier()">Update</button>
+          </template>
+
+          <template slot="footer">
+            <div class="stats">
+              <md-icon>date_range</md-icon>
+              The Multiplying factor for the Investment
+            </div>
+          </template>
+          
+        </stats-card>
+      </div>
+
+
       <div
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
       >
         <md-card>
           <md-card-header data-background-color="purple">
             <h4 class="title">Stocks Stats</h4>
-            <p class="category">Last invested on 15th February, 2021</p>
           </md-card-header>
           <md-card-content>
             <ordered-table table-header-color="purple"></ordered-table>
@@ -156,6 +181,8 @@ import {
   OrderedTable
 } from "@/components";
 
+import axios from 'axios';
+
 export default {
   components: {
     StatsCard,
@@ -164,6 +191,11 @@ export default {
   },
   data() {
     return {
+      totalInvestement : 0,
+      walletMoney:0,
+      investedValue : 0,
+      accountBalance : 0,
+      multiplier : 1,
       dailySalesChart: {
         data: {
           labels: ["M", "T", "W", "T", "F", "S", "S"],
@@ -249,6 +281,35 @@ export default {
         ]
       }
     };
+  },
+  methods: {
+      updateMultiplier () {
+        axios.put('http://localhost:3000/user/updateMuliplier',{
+          "userId":localStorage.getItem("userId"),
+          "multiplier":this.multiplier
+        })
+      }
+  },
+  beforeMount(){
+    axios.get('http://localhost:3000/investments/'+localStorage.getItem("userId"))
+    .then(data=>{
+      this.totalInvestement = data.data.length;
+      let sum = 0;
+      data.data.map((d)=>{
+        sum+= d.amount
+      })
+      this.investedValue = sum;
+      return axios.get('http://localhost:3000/user/'+localStorage.getItem("userId"))
+    })
+    .then((d)=>{
+      this.walletMoney = d.data.wallet;
+      this.multiplier = d.data.multiplier;
+      return axios.get('http://localhost:3000/getBalance/'+d.data.account_id)
+    })
+    .then((d)=>{
+      this.accountBalance = d.data.balance
+    })
+    
   }
 };
 </script>

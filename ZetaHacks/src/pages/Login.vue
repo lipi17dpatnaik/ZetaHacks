@@ -22,6 +22,7 @@
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            v-model="phoneNumber"
           />
         </div>
         <div class="mb-3">
@@ -30,6 +31,7 @@
             type="password"
             class="form-control"
             id="exampleInputPassword1"
+            v-model="password"
           />
         </div>
 
@@ -41,20 +43,40 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
+  
   data: function() {
     return {
-    isAdmin:true
+    isAdmin:true,
+    phoneNumber:"",
+    password:""
    }
   },
   methods: {
     goToDashboard: function(){
-      if (this.isAdmin === true) {
-        this.$router.push("/admin");
-      }
-      else {
-        this.$router.push("/dashboard");
-      }
+      axios.post('http://localhost:3000/user/login',{
+          "phoneNumber" : this.phoneNumber,
+          "password" : this.password
+      })
+      .then((data)=>{
+        if(data.data.isAdmin){
+          localStorage.setItem("userId",data.data.id);
+          localStorage.setItem("accountId",data.data.account_id);
+          localStorage.setItem("isLoggedIn",true);
+          localStorage.setItem("role","ADMIN");
+          this.$router.push("/admin");
+        }
+        else{
+          localStorage.setItem("userId",data.data.id);
+          localStorage.setItem("accountId",data.data.account_id);
+          localStorage.setItem("isLoggedIn",true);
+          localStorage.setItem("role","USER");
+          this.$router.push("/dashboard");
+        }
+      })
+    
     }
   }
 };
