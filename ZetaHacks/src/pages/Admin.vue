@@ -11,7 +11,7 @@
           data-background-color="purple"
         >
           <template slot="content">
-            <h4 class="title"><a href="#/table">Profit Trend</a></h4>
+            <h4 class="title"><a href="#/table">Investments</a></h4>
           </template>
 
         </chart-card>
