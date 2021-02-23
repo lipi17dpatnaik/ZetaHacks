@@ -28,6 +28,10 @@ import Notifications from "./components/NotificationPlugin";
 
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Chartist from "chartist";
 
@@ -40,6 +44,8 @@ const router = new VueRouter({
 Vue.prototype.$Chartist = Chartist;
 
 Vue.use(VueRouter);
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);

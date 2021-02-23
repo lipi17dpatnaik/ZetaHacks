@@ -10,8 +10,12 @@
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-25">
             <md-field>
-              <label>Salutation</label>
-              <md-input v-model="salutation"></md-input>
+              <select class="form-control" id="exampleFormControlSelect1" v-model="salutation">
+                <option>Salutation</option>
+                <option>Mr.</option>
+                <option>Mrs.</option>
+                <option>Ms.</option>
+              </select>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-25">
@@ -89,7 +93,7 @@
             </md-field>
           </div>-->
           <div class="md-layout-item md-size-50 text-right">
-            <md-button class="md-raised md-success" data-background-color="purple">Submit</md-button>
+            <md-button class="md-raised md-success" data-background-color="purple" v-on:click="register()">Submit</md-button>
           </div>
           <div class="md-layout-item md-size-50 text-left">
             <md-button class="md-raised md-success" data-background-color="purple" @click.native="$router.push('/login')">Login</md-button>
@@ -100,6 +104,8 @@
   </form>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: "edit-profile-form",
   props: {
@@ -111,9 +117,6 @@ export default {
   data() {
     return {
       salutation:null,
-      //username: null,
-      //disabled: null,
-      //emailadress: null,
       last_name: null,
       first_name: null,
       middle_name:null,
@@ -123,12 +126,34 @@ export default {
       gender:null,
       password:null,
       micro_invest:false
-      //address: null,
-      //city: null,
-      //country: null,
-      //code: null,
-      //aboutme: ""
     };
+  },
+  methods :{
+    register(){
+      axios.post('http://localhost:3000/user/',
+        {
+          "salutation" : this.salutation,
+          "first_name" : this.first_name,
+          "last_name" : this.last_name,
+          "middle_name" : this.middle_name,
+          "dob" : this.dob,
+          "gender":this.gender,
+          "phoneNumber" : '+'+this.phoneNumber,
+          "profile_pic":"",
+          "micro_invest":this.micro_invest,
+          "multiplier":this.multiplier,
+          "password":this.password
+      }
+    )
+    .then((data)=>{
+          localStorage.setItem("userId",data.data.id);
+          localStorage.setItem("accountId",data.data.account_id);
+          localStorage.setItem("isLoggedIn",true);
+          localStorage.setItem("role","USER");
+          this.$router.push("/dashboard");
+
+    })
+    }
   }
 };
 </script>
