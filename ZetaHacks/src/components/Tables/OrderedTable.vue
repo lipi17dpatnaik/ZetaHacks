@@ -6,13 +6,14 @@
         <md-table-cell md-label="Stocks">{{ item.name }}</md-table-cell>
         <md-table-cell md-label="Returns">{{ item.salary }}</md-table-cell>
         <md-table-cell md-label="Current">{{ item.country }}</md-table-cell>
-        <md-table-cell md-label="Shares">{{ item.city }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "ordered-table",
   props: {
@@ -25,29 +26,22 @@ export default {
     return {
       selected: [],
       users: [
-        {
-          id: 1,
-          name: "Dakota Rice",
-          salary: "$36,738",
-          country: "Niger",
-          city: "Oud-Turnhout"
-        },
-        {
-          id: 2,
-          name: "Minerva Hooper",
-          salary: "$23,738",
-          country: "Curaçao",
-          city: "Sinaai-Waas"
-        },
-        {
-          id: 3,
-          name: "Sage Rodriguez",
-          salary: "$56,142",
-          country: "Netherlands",
-          city: "Overland Park"
-        }
+        
       ]
     };
+  },
+  beforeMount(){
+    axios.get('http://localhost:3000/stocks')
+    .then(data=>{
+      data.data.map((d)=>{
+        this.users.push({
+          id:d.id,
+          name:d.stock_name,
+          salary : d.interest,
+          country : d.stock_value
+        })
+      })
+    })
   }
 };
 </script>
