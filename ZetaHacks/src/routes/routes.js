@@ -3,7 +3,7 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import Dashboard from "@/pages/Dashboard.vue";
 import Admin from "@/pages/Admin.vue";
 import UserProfile from "@/pages/UserProfile.vue";
-import TableList from "@/pages/TableList.vue";
+import ProfitTrend from "@/pages/ProfitTrend.vue";
 import Payments from "@/pages/Payments.vue";
 import Icons from "@/pages/Icons.vue";
 import Notifications from "@/pages/Notifications.vue";
@@ -44,8 +44,8 @@ const routes = [
       },
       {
         path: "table",
-        name: "Table List",
-        component: TableList
+        name: "Profit Trend",
+        component: ProfitTrend
       },
       {
         path: "typography",
