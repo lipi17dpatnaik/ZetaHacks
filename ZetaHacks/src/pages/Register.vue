@@ -61,7 +61,7 @@
           <div class="md-layout-item md-small-size-100 md-size-25">
             <md-field>
               <label>Password</label>
-              <md-input v-model="password" type="text"></md-input>
+              <md-input v-model="password" type="password"></md-input>
             </md-field>
           </div>
           <!--<div class="md-layout-item md-small-size-100 md-size-33">

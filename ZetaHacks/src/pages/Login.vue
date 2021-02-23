@@ -1,50 +1,36 @@
 <template>
-  <!-- <div class="container"> -->
-  <!-- <div class="row"></div> -->
-  <div class="container">
-    <br />
-    <br />
-    <br />
-    <h1>Login Page</h1>
+<form>
+    <md-card> 
+      <md-card-header :data-background-color="dataBackgroundColor">
+        <h4 class="title"> Login Page</h4>
+        <!--<p class="category">Complete your profile</p>-->
+      </md-card-header>
 
-    <br />
-    <br />
-    <br />
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            v-model="phoneNumber"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            v-model="password"
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary" @click="goToDashboard">Login</button>
-      </form>
-      <!-- </div> -->
-    </div>
-  </div>
+      <md-card-content>
+  <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>Phone No.</label>
+              <md-input v-model="phoneNumber" type="text"></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>Password</label>
+              <md-input v-model="password" type="password"></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-size-50 text-left">
+            <md-button class="md-raised md-success" data-background-color="purple" @click="goToDashboard">Login</md-button>
+          </div>
+      </md-card-content>
+    </md-card>
+</form>
+  
 </template>
+
 
 <script>
 import axios from 'axios'
-
 export default {
   
   data: function() {
@@ -81,4 +67,6 @@ export default {
   }
 };
 </script>
+
+
 

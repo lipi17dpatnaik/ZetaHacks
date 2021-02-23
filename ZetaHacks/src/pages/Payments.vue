@@ -28,34 +28,14 @@
           </div>
           <div class="md-layout-item md-small-size-100 md-size-25">
             <md-field>
-              <label>First Name</label>
-              <md-input v-model="first_name" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-25">
-            <md-field>
-              <label>Middle Name</label>
-              <md-input v-model="middle_name" type="text"></md-input>
-            </md-field>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-25">
-            <md-field>
-              <label>Last Name</label>
-              <md-input v-model="last_name" type="text"></md-input>
+              <label>Name</label>
+              <md-input v-model="name" type="text"></md-input>
             </md-field>
           </div>
           
+          
           </div>
-          <div class="md-layout-item md-small-size-100 md-size-25">
-              <label>Micro-invest</label>
-                <md-switch v-model="micro_invest">Yes</md-switch>
-          </div>
-          <div class="md-layout-item md-small-size-100 md-size-25">
-            <md-field>
-              <label>Multiplier</label>
-              <md-input v-model="multiplier" type="number"></md-input>
-            </md-field>
-          </div>
+          
           
           <div class="md-layout-item md-size-50 text-right">
             <md-button class="md-raised md-success" data-background-color="purple">Pay</md-button>
@@ -90,7 +70,7 @@ export default {
       // multiplier:null,
       // gender:null,
       // password:null,
-      micro_invest:false
+      // micro_invest:false
       //address: null,
       //city: null,
       //country: null,
