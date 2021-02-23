@@ -1,10 +1,11 @@
 <template>
-  <div class="content">
-    <div class="md-layout">
-      <div class="md-layout-item">
-        <md-card>
-          <md-card-header data-background-color="green">
-            <h4 class="title">Enter Phone No. of Payee</h4>
+  
+  <form>
+    <md-card>
+      <md-card-header :data-background-color="dataBackgroundColor">
+        <!-- <h4 class="title">Payments</h4> -->
+        <!--<p class="category">Complete your profile</p>-->
+        <h5 class="title">Search Phone No.</h5>
             <div class="active-pink-3 active-pink-4 mb-3">
               <input
                 class="form-control"
@@ -13,160 +14,89 @@
                 aria-label="Search"
               />
             </div>
-            <!-- <p class="category">Created using Roboto Font Family</p> -->
-          </md-card-header>
-          <md-card-content>
-            <div id="typography">
-              <div class="tim-typo">
-                <h5>Previous Payees</h5>
-              </div>
-              <div class="row">
-                <div class="tim-typo">
-                  <h5>
-                    <span class="tim-note"> <h5 class="tim">Mark</h5></span>Rs. 257
-                  </h5>
-                 <button type="button" onclick="">Pay Again</button>
-                </div>
-                <div class="tim-typo">
-                  <h5>
-                    <span class="tim-note"><h5 class="tim">Jack</h5></span>Rs. 198
-                  </h5><button type="button" onclick="">Pay Again</button>
-                </div>
-                <!-- <div class="tim-typo">
-                  <h3>
-                    <span class="tim-note">Header 3</span>The life of Material
-                    Dashboard
-                  </h3>
-                </div>
-                <div class="tim-typo">
-                  <h4>
-                    <span class="tim-note">Header 4</span>The life of Material
-                    Dashboard
-                  </h4>
-                </div>
-                <div class="tim-typo">
-                  <h5>
-                    <span class="tim-note">Header 5</span>The life of Material
-                    Dashboard
-                  </h5>
-                </div>
-                <div class="tim-typo">
-                  <h6>
-                    <span class="tim-note">Header 6</span>The life of Material
-                    Dashboard
-                  </h6>
-                </div>
-                <div class="tim-typo">
-                  <p>
-                    <span class="tim-note">Paragraph</span>
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers. I understand
-                    culture. I am the nucleus. I think that’s a responsibility
-                    that I have, to push possibilities, to show people, this is
-                    the level that things could be at.
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Quote</span>
-                  <blockquote>
-                    <p>
-                      I will be the leader of a company that ends up being worth
-                      billions of dollars, because I got the answers. I
-                      understand culture. I am the nucleus. I think that’s a
-                      responsibility that I have, to push possibilities, to show
-                      people, this is the level that things could be at.
-                    </p>
-                    <small> Kanye West, Musician </small>
-                  </blockquote>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Muted Text</span>
-                  <p class="text-muted">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Primary Text</span>
-                  <p class="text-primary">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Info Text</span>
-                  <p class="text-info">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Success Text</span>
-                  <p class="text-success">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Warning Text</span>
-                  <p class="text-warning">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Danger Text</span>
-                  <p class="text-danger">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div> -->
-                <!-- <div class="tim-typo">
-                  <h2>
-                    <span class="tim-note">Small Tag</span>
-                    Header with small subtitle
-                    <br />
-                    <small>Use "small" tag for the headers</small>
-                  </h2>
-                </div> -->
-              </div>
-            </div>
-          </md-card-content>
-        </md-card>
-      </div>
-    </div>
-  </div>
+               <md-button class="md-raised md-success" data-background-color="blue">Search</md-button>
+
+      </md-card-header>
+
+      <md-card-content>
+        <div class="md-layout">
+          <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>Phone No.</label>
+              <md-input v-model="phoneNumber"></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>First Name</label>
+              <md-input v-model="first_name" type="text"></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>Middle Name</label>
+              <md-input v-model="middle_name" type="text"></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>Last Name</label>
+              <md-input v-model="last_name" type="text"></md-input>
+            </md-field>
+          </div>
+          
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-25">
+              <label>Micro-invest</label>
+                <md-switch v-model="micro_invest">Yes</md-switch>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-25">
+            <md-field>
+              <label>Multiplier</label>
+              <md-input v-model="multiplier" type="number"></md-input>
+            </md-field>
+          </div>
+          
+          <div class="md-layout-item md-size-50 text-right">
+            <md-button class="md-raised md-success" data-background-color="purple">Pay</md-button>
+          </div>
+          
+        <!-- </div> -->
+      </md-card-content>
+    </md-card>
+  </form>
 </template>
 
 <script>
-import { mdbContainer } from "mdbvue";
-
 export default {
-  // components: {
-  //   mdbContainer,
-  // },
+  name: "edit-profile-form",
   props: {
     dataBackgroundColor: {
       type: String,
-      default: "",
-    },
+      default: "purple"
+    }
   },
+  data() {
+    return {
+      // salutation:null,
+      //username: null,
+      //disabled: null,
+      //emailadress: null,
+      last_name: null,
+      first_name: null,
+      middle_name:null,
+      // dob:null,
+      phoneNumber:null,
+      // multiplier:null,
+      // gender:null,
+      // password:null,
+      micro_invest:false
+      //address: null,
+      //city: null,
+      //country: null,
+      //code: null,
+      //aboutme: ""
+    };
+  }
 };
 </script>
-
-<style>
-.active-pink-4 input[type="text"]:focus:not([readonly]) {
-  border: 1px solid white;
-  box-shadow: 0 0 0 1px white;
-  background-color: white;
-}
-.active-pink-3 input[type="text"] {
-  border: 1px solid white;
-  box-shadow: 0 0 0 1px white;
-  background-color: white;
-}
-
-.tim{
-  color: black;
-}
-</style>
